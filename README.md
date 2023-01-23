@@ -7,10 +7,13 @@
 In your python environment please install requirements as pip install -r requirements.txt
 Then you can simply run server as 'python3 manage.py runserver'
 
-Each server is post server and get json data like:
+Each server is post server and get JSON data like:
 `
     {
         "numbers": [1, 2, 3, -4],
         "percentile": 100
     }
 `
+
+## 3. For the favorite dogs task, I have to write the simplest pure Javascript code. So I wrote separate 2 index.html and favorites.html files.
+When you click any media on index.html, It will add the URL to local storage and you can find it at favorites.html.

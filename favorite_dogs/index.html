@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose your favorite dog</title>
+</head>
+<body>
+    <div id="dog-select">
+    </div>
+    <script>
+        const dogsContainer = document.getElementById("dog-select")
+        for (let i = 0; i < 6; i++) {
+            fetch("https://random.dog/woof.json")
+            .then((response) => response.json())
+            .then((json) => {
+                if (json.url.includes(".mp4") || json.url.includes(".MP4") || json.url.includes(".webm") || json.url.includes(".WEBM")) {
+                    let video = document.createElement('video');
+                    let source = document.createElement('source');
+                    source.src = json.url;
+                    video.height = 250;
+                    video.controls = true;
+                    video.preload = "auto";
+                    video.width = 450;
+                    video.appendChild(source);
+                    video.onclick = function(){
+                        let favDogs = JSON.parse(localStorage.getItem('dogs'));
+                        if (!favDogs) {
+                            favDogs = [];
+                        }
+                        favDogs.push(json.url);
+                        localStorage.setItem('dogs', JSON.stringify(favDogs));
+                    };
+                    dogsContainer.appendChild(video);
+                } else {
+                    let img = document.createElement('img');
+                    img.src = json.url;
+                    img.height = 250;
+                    img.onclick = function(){
+                        let favDogs = JSON.parse(localStorage.getItem('dogs'));
+                        if (!favDogs) {
+                            favDogs = [];
+                        }
+                        favDogs.push(json.url);
+                        localStorage.setItem('dogs', JSON.stringify(favDogs));
+                    };
+                    dogsContainer.appendChild(img);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
