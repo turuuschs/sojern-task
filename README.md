@@ -1,5 +1,5 @@
 # sojern-task
-### tasks are written in Python
+### Tasks are written in Python
 
 ## 1. Comparing versions task is in 'compare_versions' folder and 'solve.py' file. You can run it 'python3 solve.py' easily. It will show result with test cases.
 
